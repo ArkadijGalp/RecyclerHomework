@@ -1,4 +1,4 @@
-package space.arkady.recyclerhomework.recycler
+package space.arkady.recyclerhomework
 
 data class ListItem(
     val model: String
