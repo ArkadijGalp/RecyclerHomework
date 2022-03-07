@@ -4,13 +4,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import space.arkady.recyclerhomework.GraphicCard
 import space.arkady.recyclerhomework.ListItem
-import space.arkady.recyclerhomework.onlistItemClick.OnListItemClick
 
-class ListAdapter(val onListItemClick: OnListItemClick) : RecyclerView.Adapter<ListViewHolder>() {
+class ListAdapter() : RecyclerView.Adapter<ListViewHolder>() {
 
     private var items: List<ListItem> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        return ListViewHolder.newInstance(parent, onListItemClick)
+        return ListViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
@@ -18,13 +17,20 @@ class ListAdapter(val onListItemClick: OnListItemClick) : RecyclerView.Adapter<L
     }
 
     override fun getItemCount() = GraphicCard.graphicCardList.size
-    fun submitList(data: List<ListItem>) {
 
-        items = data
+    fun submitCardList(data: List<String>) {
+        var mutableList = items.toMutableList()
+        for (element in data.sorted()){
+            mutableList.add(ListItem(element))
+        }
+
+        items = mutableList.toList()
 
         notifyDataSetChanged()
     }
 }
+
+
 
 
 
