@@ -3,7 +3,10 @@ package space.arkady.recyclerhomework
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import space.arkady.recyclerhomework.fragment.BottomFragment
+import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.presentation.recycler.GraphicCardClickListener
+import space.arkady.recyclerhomework.presentation.recycler.GraphicCardViewModel
+import space.arkady.recyclerhomework.presentation.recycler.fragment.GraphicCardFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,10 +16,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val bottomDialogFragmentCard = BottomFragment()
+        val graphicCardDialogFragmentCard =
+            GraphicCardFragment(GraphicCardViewModel(), getGraphicCard)
 
-        listShowingGraphicCards.setOnClickListener {
-            bottomDialogFragmentCard.show(supportFragmentManager, "Show Fragment")
+        selectGraphicCard.setOnClickListener {
+            graphicCardDialogFragmentCard.show(supportFragmentManager, "Show Fragment")
         }
+    }
+
+    private val getGraphicCard = object : GraphicCardClickListener {
+        override fun graphicCardListener(item: GraphicCardItem) {
+            selectGraphicCard.setText(item.item)
+        }
+
     }
 }
