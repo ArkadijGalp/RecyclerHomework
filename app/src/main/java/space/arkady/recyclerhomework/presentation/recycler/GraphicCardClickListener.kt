@@ -1,7 +1,7 @@
 package space.arkady.recyclerhomework.presentation.recycler
 
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCardItem
 
 interface GraphicCardClickListener {
-    fun graphicCardListener(item: GraphicCardItem)
+    fun graphicCardListener(itemUsecase: UsecaseGraphicCardItem)
 }

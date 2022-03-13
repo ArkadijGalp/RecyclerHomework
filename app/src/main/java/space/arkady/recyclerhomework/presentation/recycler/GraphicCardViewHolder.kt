@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.graphiccard_item_view.view.*
 import space.arkady.recyclerhomework.R
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCardItem
 
 class GraphicCardViewHolder(
     itemView: View,
@@ -24,17 +24,17 @@ class GraphicCardViewHolder(
     }
 
 
-    fun bindItem(grCard: GraphicCardItem) {
-        with(grCard) {
-            itemView.nameProduct.text = grCard.item
-            if (grCard.item.contains("NVIDIA")) {
+    fun bindItem(grCardUsecase: UsecaseGraphicCardItem) {
+        with(grCardUsecase) {
+            itemView.nameProduct.text = grCardUsecase.item
+            if (grCardUsecase.item.contains("NVIDIA")) {
                 itemView.brandLogo.setImageResource(R.drawable.nvidia_logo)
-            } else if (grCard.item.contains("AMD")) {
+            } else if (grCardUsecase.item.contains("AMD")) {
                 itemView.brandLogo.setImageResource(R.drawable.amd_logo)
             }
         }
         itemView.root.setOnClickListener {
-            getCardClickItem.graphicCardListener(grCard)
+            getCardClickItem.graphicCardListener(grCardUsecase)
         }
     }
 }

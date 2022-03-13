@@ -7,12 +7,12 @@ import space.arkady.recyclerhomework.data.GraphicCardRepositoryImplement
 import space.arkady.recyclerhomework.domain.domain.GraphicCardInteractor
 import space.arkady.recyclerhomework.domain.domain.GraphicCardInteractorImplement
 import space.arkady.recyclerhomework.domain.domain.GraphicCardRepository
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCardItem
 
 class GraphicCardViewModel : ViewModel() {
 
-    val graphicLiveData: LiveData<List<GraphicCardItem>> get() = _graphicLiveData
-    private val _graphicLiveData = MutableLiveData<List<GraphicCardItem>>()
+    val usecaseGraphicLiveData: LiveData<List<UsecaseGraphicCardItem>> get() = _graphicLiveData
+    private val _graphicLiveData = MutableLiveData<List<UsecaseGraphicCardItem>>()
     private val repository: GraphicCardRepository = GraphicCardRepositoryImplement
     private val interactor: GraphicCardInteractor = GraphicCardInteractorImplement(repository)
 

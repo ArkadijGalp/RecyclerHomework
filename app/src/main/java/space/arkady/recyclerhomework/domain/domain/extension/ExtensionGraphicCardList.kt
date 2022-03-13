@@ -1,11 +1,11 @@
 package space.arkady.recyclerhomework.domain
 
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCard
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCard
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCardItem
 
-fun List<GraphicCard>.toGraphicCardList(): List<GraphicCardItem> {
+fun List<UsecaseGraphicCard>.toGraphicCardList(): List<UsecaseGraphicCardItem> {
     return this.map { item ->
-        GraphicCardItem(
+        UsecaseGraphicCardItem(
             "${item.brand}${item.number}${item.postfix}${item.series}"
         )
     }

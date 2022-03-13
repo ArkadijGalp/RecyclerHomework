@@ -1,6 +1,6 @@
-package space.arkady.recyclerhomework.domain.domain.models
+package space.arkady.recyclerhomework.domain.domain.usecases
 
-data class GraphicCard(
+data class UsecaseGraphicCard(
     val brand: String,
     val series: String,
     val number: Int,

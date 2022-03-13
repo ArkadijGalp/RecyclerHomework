@@ -8,7 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_dialog_graphiccard.*
 
 import space.arkady.recyclerhomework.R
-import space.arkady.recyclerhomework.domain.domain.models.GraphicCardItem
+import space.arkady.recyclerhomework.domain.domain.usecases.UsecaseGraphicCardItem
 import space.arkady.recyclerhomework.presentation.recycler.GraphicCardAdapter
 import space.arkady.recyclerhomework.presentation.recycler.GraphicCardClickListener
 import space.arkady.recyclerhomework.presentation.recycler.GraphicCardViewModel
@@ -20,8 +20,8 @@ class GraphicCardFragment(
 
 
     private val selectGraphicCard = object : GraphicCardClickListener {
-        override fun graphicCardListener(item: GraphicCardItem) {
-            getGraphicCard.graphicCardListener(item)
+        override fun graphicCardListener(itemUsecase: UsecaseGraphicCardItem) {
+            getGraphicCard.graphicCardListener(itemUsecase)
             dismiss()
         }
 
@@ -40,7 +40,7 @@ class GraphicCardFragment(
     override fun onStart() {
         super.onStart()
 
-        graphicCardViewModel.graphicLiveData.observe(viewLifecycleOwner) { listCard ->
+        graphicCardViewModel.usecaseGraphicLiveData.observe(viewLifecycleOwner) { listCard ->
             adapter.submitCardList(listCard)
         }
         recycler.adapter = adapter
